@@ -28,6 +28,8 @@ type ResourceManagerAccount struct {
 
 	AuthenticatedAsAServicePrincipal bool
 	RegisteredResourceProviders      resourceproviders.ResourceProviders
+
+	MaxGoSdkRetries             int32
 }
 
 func NewResourceManagerAccount(ctx context.Context, config auth.Credentials, subscriptionId string, registeredResourceProviders resourceproviders.ResourceProviders) (*ResourceManagerAccount, error) {
@@ -122,6 +124,7 @@ func NewResourceManagerAccount(ctx context.Context, config auth.Credentials, sub
 
 		AuthenticatedAsAServicePrincipal: authenticatedAsServicePrincipal,
 		RegisteredResourceProviders:      registeredResourceProviders,
+		MaxGoSdkRetries:                  maxGoSdkRetries,
 	}
 
 	return &account, nil
